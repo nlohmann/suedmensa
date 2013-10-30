@@ -1,0 +1,15 @@
+# suedmensa heute (30.10.2013)
+submenue=47&type=details&detail1=1&detail2=8432
+
+# georg heute (30.10.2013)
+submenue=47&type=details&detail1=2&detail2=8437
+
+# ulme heute (30.10.2013)
+submenue=47&type=details&detail1=3&detail2=8436
+
+# suedmensa diese woche (30.10.2013)
+submenue=48&type=details&detail1=1&detail2=8386
+
+# suedmensa nächste woche (30.10.2013)
+submenue=48&type=details&detail1=1&detail2=8432
+
