@@ -4,7 +4,7 @@ import bs4
 import urllib2
 import json
 
-def getplan():
+def getmenu():
     """
     Returns the current menu as dictionary.
     """
@@ -37,6 +37,11 @@ def getplan():
         "aktion": [],
         "pasta": []
     }
+
+    # in case of holidays, return commented, empty menu
+    if menu_list[1] == 'Feiertag':
+        menu["kommentar"] = 'Feiertag'
+    return menu
 
     theke = ''
     praedikat = ''
@@ -86,7 +91,7 @@ def getplan():
 
         menu[theke].append((item + praedikat))
 
-    return menu
+    return menu.decode('unicode-escape').encode('utf-8')
 
 if __name__ == "__main__":
-    print json.dumps(getplan(), indent=2)
+    print json.dumps(getmenu(), indent=2)

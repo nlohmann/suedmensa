@@ -4,7 +4,7 @@ Lädt den Speiseplan der großartigen [Südmensa](http://tinyurl.com/suedmensa) 
 
 ## Beispiel
 
-    ./getplan.py
+    ./suedmensa/menu.py
 
 ```json
 {
