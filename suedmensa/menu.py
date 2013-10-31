@@ -41,7 +41,7 @@ def getmenu():
     # in case of holidays, return commented, empty menu
     if menu_list[1] == 'Feiertag':
         menu["kommentar"] = 'Feiertag'
-    return menu
+        return menu
 
     theke = ''
     praedikat = ''
@@ -91,7 +91,7 @@ def getmenu():
 
         menu[theke].append((item + praedikat))
 
-    return menu.decode('unicode-escape').encode('utf-8')
+    return menu
 
 if __name__ == "__main__":
     print json.dumps(getmenu(), indent=2)
