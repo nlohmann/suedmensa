@@ -35,7 +35,8 @@ def getmenu():
         "theke2": [],
         "vital": [],
         "aktion": [],
-        "pasta": []
+        "pasta": [],
+        "url": url
     }
 
     # in case of holidays, return commented, empty menu
