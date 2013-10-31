@@ -10,27 +10,27 @@ Lädt den Speiseplan der großartigen [Südmensa](http://tinyurl.com/suedmensa) 
 {
   "datum": "30.10.2013", 
   "aktion": [
-    "Coq au Vin - H\u00e4hnchen in Rotwein und Pilzen (L-)"
+    "Coq au Vin - Hähnchen in Rotwein und Pilzen (L-)"
   ], 
   "pasta": [
-    "Tomatenso\u00dfe mit Rucola (vegan) (L-)", 
-    "Puten-Curry-So\u00dfe"
+    "Tomatensoße mit Rucola (vegan) (L-)", 
+    "Puten-Curry-Soße"
   ], 
   "vital": [
-    "Grie\u00dfsuppe mit Basilikum", 
-    "Chicken Tikka masala (ind. H\u00e4hnchen-Curry)", 
+    "Grießsuppe mit Basilikum", 
+    "Chicken Tikka masala (ind. Hähnchen-Curry)", 
     "Bolognese mit Rinderhackfleisch", 
-    "Nudelpfanne mit Gem\u00fcse (L-) (vegan)", 
+    "Nudelpfanne mit Gemüse (L-) (vegan)", 
     "Falafel mit Dip (vegan)", 
-    "K\u00e4seschnitzel (fleischlos)"
+    "Käseschnitzel (fleischlos)"
   ], 
   "theke1": [
-    "Kartoffel-Gem\u00fcseauflauf"
+    "Kartoffel-Gemüseauflauf"
   ], 
   "theke2": [
-    "Steak mit Tomate und Mozzarella \u00fcberbacken", 
+    "Steak mit Tomate und Mozzarella überbacken", 
     "griechisches Hacksteak", 
-    "Fischfilet, P\u00fcree mit Sellerie (Tagestipp)"
+    "Fischfilet, Püree mit Sellerie (Tagestipp)"
   ]
 }
 ```
