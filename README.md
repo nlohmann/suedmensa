@@ -10,31 +10,33 @@ Lädt den Speiseplan der großartigen [Südmensa](http://tinyurl.com/suedmensa) 
 {
     "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8432", 
     "datum": "01.11.2013", 
-    "aktion": [
-        "Asia-Curry (vegan) wahlweise mit Hähnchenstreifen mit Basmatireis (Tagestipp)"
-    ], 
-    "pasta": [
-        "Pfifferlings-Sahnesoße", 
-        "Tomatensoße mit Hackbällchen"
-    ], 
-    "vital": [
-        "Hühnersuppe", 
-        "Rindersauerbraten mit Sauce (L-)", 
-        "Kabeljau, natur, gebraten (L-)", 
-        "Auberginen, gebacken (L-) (vegan)", 
-        "Makkaroni mit Cashew-Paprikasauce (vegan)", 
-        "vier Mozzarella-Sticks (fleischlos)", 
-        "Pilzgemüse auf Kichererbsenpüree mit Lauch (fleischlos)"
-    ], 
-    "theke1": [
-        "Brathering (L-) / Sahnehering (L+)"
-    ], 
-    "theke2": [
-        "Hähnchensteak in Knusperpanade", 
-        "Steak in Kräuterpanade", 
-        "Nudelauflauf", 
-        "Köfta (Rindfleisch-Gemüsebällchen)"
-    ]
+    "theken": {
+        "theke1": [
+            "Brathering (L-) / Sahnehering (L+)"
+        ], 
+        "aktion": [
+            "Asia-Curry (vegan) wahlweise mit Hähnchenstreifen mit Basmatireis (Tagestipp)"
+        ], 
+        "theke2": [
+            "Hähnchensteak in Knusperpanade", 
+            "Steak in Kräuterpanade", 
+            "Nudelauflauf", 
+            "Köfta (Rindfleisch-Gemüsebällchen)"
+        ], 
+        "pasta": [
+            "Pfifferlings-Sahnesoße", 
+            "Tomatensoße mit Hackbällchen"
+        ], 
+        "vital": [
+            "Hühnersuppe", 
+            "Rindersauerbraten mit Sauce (L-)", 
+            "Kabeljau, natur, gebraten (L-)", 
+            "Auberginen, gebacken (L-) (vegan)", 
+            "Makkaroni mit Cashew-Paprikasauce (vegan)", 
+            "vier Mozzarella-Sticks (fleischlos)", 
+            "Pilzgemüse auf Kichererbsenpüree mit Lauch (fleischlos)"
+        ]
+    }
 }
 ```
 
