@@ -4,7 +4,7 @@ import bs4
 import urllib2
 import json
 
-def getmenu(mensa='suedmensa'):
+def getmenu(mensa):
     """
     Returns the current menu as dictionary.
     """
@@ -113,4 +113,4 @@ def getmenu(mensa='suedmensa'):
     return menu
 
 if __name__ == "__main__":
-    print json.dumps(getmenu(), indent=2)
+    print json.dumps(getmenu('suedmensa'), indent=2)

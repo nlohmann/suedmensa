@@ -16,9 +16,10 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 # enable compression
 Compress(app)
 
+@app.route("/")
 @app.route("/<mensa>")
 @cache.cached(timeout=120)
-def menu(mensa):
+def menu(mensa='suedmensa'):
     try:
         menu = json.dumps(getmenu(mensa), indent=4).decode('unicode-escape').encode('utf-8')
         resp = Response(menu, status=200, mimetype="application/json; charset=utf-8")
