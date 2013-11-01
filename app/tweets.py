@@ -14,7 +14,7 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 
 CREDENTIALS = json.load(open(os.path.join(__location__, 'credentials.json'), 'r'))
 
-m = getmenu()
+m = getmenu('suedmensa')
 
 if 'kommentar' in m:
     print m['kommentar']
