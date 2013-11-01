@@ -4,14 +4,23 @@ import bs4
 import urllib2
 import json
 
-def getmenu():
+def getmenu(mensa='suedmensa'):
     """
     Returns the current menu as dictionary.
     """
 
+    # build the url from the given mensa
+    baseurl = "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2="
+    detailurls = {
+        "suedmensa": "8432",
+        "stgeorg": "8437",
+        "kleineulme": "8444",
+        "ulme69": "8443",
+        "einstein": "8431"
+    }
+    url = baseurl + detailurls[mensa]
+
     # load and parse the menu website
-    url = ("http://www.studentenwerk-rostock.de/index.php?lang=de"
-           "&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8432")
     html = urllib2.urlopen(url).read()
     soup = bs4.BeautifulSoup(html, "lxml")
 
@@ -31,12 +40,8 @@ def getmenu():
     # the structure of the return object
     menu = {
         "datum": menu_list[0].split()[-1],
-        "theke1": [],
-        "theke2": [],
-        "vital": [],
-        "aktion": [],
-        "pasta": [],
-        "url": url
+        "url": url,
+        "theken": {}
     }
 
     # in case of holidays, return commented, empty menu
@@ -60,7 +65,13 @@ def getmenu():
             praedikat = ''
             continue
 
-        if item == 'VITALTHEKE':
+        if item == 'THEKE 3':
+            theke = 'theke3'
+            praedikat = ''
+            continue
+
+        # deal also with "VITALTHEKE (Theke 2)"
+        if item[0:10] == 'VITALTHEKE':
             theke = 'vital'
             praedikat = ''
             continue
@@ -90,7 +101,14 @@ def getmenu():
         if "TAGESTIPP: " in item:
             item = item[11:] + "(Tagestipp)"
 
-        menu[theke].append((item + praedikat))
+        # deal with mensas with only one (unnamed) counter
+        if theke == "":
+            theke = "theke1"
+
+        # add entry to current counter
+        if not theke in menu["theken"]:
+            menu["theken"][theke] = []
+        menu["theken"][theke].append((item + praedikat))
 
     return menu
 
