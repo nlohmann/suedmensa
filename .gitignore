@@ -3,3 +3,7 @@ venv
 *.pyc
 
 app/credentials.json
+
+app/credentials_kleineulme.json
+
+app/credentials_suedmensa.json
