@@ -30,7 +30,6 @@ shorten_list = [
     (' an ', '+'),
     (' auf ', '+'),
     (' und ', '+'),
-    ('/', '/'),
     (' - ', ': '),
     ('süss', 'süß'),
     ('zwei ', '2 '),
@@ -96,9 +95,9 @@ def tweets(theke):
     l = [shorten(x.encode('utf-8')) for x in theke]
     return " | ".join(l)
 
-tweet1 = "THEKE 1: %s ‖ PASTA: %s ‖ AKTION: %s" % (tweets(m['theke1']), tweets(m['pasta']), tweets(m['aktion']))
-tweet2 = "VITAL: %s" % tweets(m['vital'])
-tweet3 = "THEKE 2: %s ‖ %s!" % (tweets(m['theke2']), bon_appetit())
+tweet1 = "THEKE 1: %s ‖ PASTA: %s ‖ AKTION: %s" % (tweets(m['theken']['theke1']), tweets(m['theken']['pasta']), tweets(m['theken']['aktion']))
+tweet2 = "VITAL: %s" % tweets(m['theken']['vital'])
+tweet3 = "THEKE 2: %s ‖ %s!" % (tweets(m['theken']['theke2']), bon_appetit())
 
 tweets = [cap_length(tweet1), cap_length(tweet2), cap_length(tweet3)]
 
@@ -106,3 +105,5 @@ auth = tweepy.OAuthHandler(CREDENTIALS['CONSUMER_KEY'], CREDENTIALS['CONSUMER_SE
 auth.set_access_token(CREDENTIALS['ACCESS_KEY'], CREDENTIALS['ACCESS_SECRET'])
 api = tweepy.API(auth)
 
+for tweet in tweets:
+    print tweet
