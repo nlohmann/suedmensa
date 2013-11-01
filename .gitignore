@@ -1,3 +1,5 @@
 venv
 
 *.pyc
+
+app/credentials.json

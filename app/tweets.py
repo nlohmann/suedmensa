@@ -2,10 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import json
+import tweepy
+import os
 import random
 random.seed()
 
 from menu import getmenu
+
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+
+CREDENTIALS = json.load(open(os.path.join(__location__, 'credentials.json'), 'r'))
 
 m = getmenu()
 
@@ -93,7 +100,9 @@ tweet1 = "THEKE 1: %s ‖ PASTA: %s ‖ AKTION: %s" % (tweets(m['theke1']), twee
 tweet2 = "VITAL: %s" % tweets(m['vital'])
 tweet3 = "THEKE 2: %s ‖ %s!" % (tweets(m['theke2']), bon_appetit())
 
-print cap_length(tweet1)
-print cap_length(tweet2)
-print cap_length(tweet3)
+tweets = [cap_length(tweet1), cap_length(tweet2), cap_length(tweet3)]
+
+auth = tweepy.OAuthHandler(CREDENTIALS['CONSUMER_KEY'], CREDENTIALS['CONSUMER_SECRET'])
+auth.set_access_token(CREDENTIALS['ACCESS_KEY'], CREDENTIALS['ACCESS_SECRET'])
+api = tweepy.API(auth)
 

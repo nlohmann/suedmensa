@@ -7,4 +7,5 @@ Werkzeug==0.9.4
 beautifulsoup4==4.3.2
 itsdangerous==0.23
 lxml==3.2.3
+tweepy==2.1
 wsgiref==0.1.2
