@@ -1,6 +1,7 @@
 # everything for Flask
 from flask import Flask, Response
 from flask.ext.cache import Cache
+from flask.ext.compress import Compress
 
 # Suedmensa
 import json
@@ -9,8 +10,12 @@ from suedmensa.menu import getmenu
 # the Flask app
 app = Flask(__name__)
 
+# set cache
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 cache.init_app(app)
+
+# enable compression
+Compress(app)
 
 @app.route("/")
 @cache.cached(timeout=120)
