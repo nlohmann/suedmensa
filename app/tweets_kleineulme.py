@@ -12,9 +12,9 @@ from menu import getmenu
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 
-CREDENTIALS = json.load(open(os.path.join(__location__, 'credentials.json'), 'r'))
+CREDENTIALS = json.load(open(os.path.join(__location__, 'credentials_kleineulme.json'), 'r'))
 
-m = getmenu('suedmensa')
+m = getmenu('kleineulme')
 
 if 'kommentar' in m:
     print m['kommentar']
@@ -95,9 +95,9 @@ def tweets(theke):
     l = [shorten(x.encode('utf-8')) for x in theke]
     return " | ".join(l)
 
-tweet1 = "THEKE 1: %s ‖ PASTA: %s ‖ AKTION: %s" % (tweets(m['theken']['theke1']), tweets(m['theken']['pasta']), tweets(m['theken']['aktion']))
-tweet2 = "VITAL: %s" % tweets(m['theken']['vital'])
-tweet3 = "THEKE 2: %s ‖ %s!" % (tweets(m['theken']['theke2']), bon_appetit())
+tweet1 = "VITAL: %s ‖ %s!" % (tweets(m['theken']['vital']), bon_appetit())
+tweet2 = "THEKE 2: %s" % tweets(m['theken']['theke2'])
+tweet3 = "THEKE 1: %s" % tweets(m['theken']['theke1'])
 
 tweets = [cap_length(tweet1), cap_length(tweet2), cap_length(tweet3)]
 
@@ -107,3 +107,4 @@ api = tweepy.API(auth)
 
 for tweet in tweets:
     print tweet
+    api.update_status(tweet)
