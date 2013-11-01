@@ -15,8 +15,8 @@ cache.init_app(app)
 @app.route("/")
 @cache.cached(timeout=120)
 def menu():
-    menu = response=json.dumps(getmenu(), indent=4)
-    resp = Response(menu, status=200, mimetype="application/json")
+    menu = response=json.dumps(getmenu(), indent=4).decode('unicode-escape').encode('utf-8')
+    resp = Response(menu, status=200, mimetype="application/json; charset=utf-8")
     return resp
 
 if __name__ == "__main__":
