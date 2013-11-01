@@ -5,7 +5,7 @@ from flask.ext.compress import Compress
 
 # Suedmensa
 import json
-from suedmensa.menu import getmenu
+from menu import getmenu
 
 # the Flask app
 app = Flask(__name__)

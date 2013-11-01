@@ -4,40 +4,43 @@ Lädt den Speiseplan der großartigen [Südmensa](http://tinyurl.com/suedmensa) 
 
 ## Beispiel
 
-    ./suedmensa/menu.py
+    ./app/menu.py
 
 ```json
 {
-  "datum": "30.10.2013", 
-  "aktion": [
-    "Coq au Vin - Hähnchen in Rotwein und Pilzen (L-)"
-  ], 
-  "pasta": [
-    "Tomatensoße mit Rucola (vegan) (L-)", 
-    "Puten-Curry-Soße"
-  ], 
-  "vital": [
-    "Grießsuppe mit Basilikum", 
-    "Chicken Tikka masala (ind. Hähnchen-Curry)", 
-    "Bolognese mit Rinderhackfleisch", 
-    "Nudelpfanne mit Gemüse (L-) (vegan)", 
-    "Falafel mit Dip (vegan)", 
-    "Käseschnitzel (fleischlos)"
-  ], 
-  "theke1": [
-    "Kartoffel-Gemüseauflauf"
-  ], 
-  "theke2": [
-    "Steak mit Tomate und Mozzarella überbacken", 
-    "griechisches Hacksteak", 
-    "Fischfilet, Püree mit Sellerie (Tagestipp)"
-  ]
+    "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8432", 
+    "datum": "01.11.2013", 
+    "aktion": [
+        "Asia-Curry (vegan) wahlweise mit Hähnchenstreifen mit Basmatireis (Tagestipp)"
+    ], 
+    "pasta": [
+        "Pfifferlings-Sahnesoße", 
+        "Tomatensoße mit Hackbällchen"
+    ], 
+    "vital": [
+        "Hühnersuppe", 
+        "Rindersauerbraten mit Sauce (L-)", 
+        "Kabeljau, natur, gebraten (L-)", 
+        "Auberginen, gebacken (L-) (vegan)", 
+        "Makkaroni mit Cashew-Paprikasauce (vegan)", 
+        "vier Mozzarella-Sticks (fleischlos)", 
+        "Pilzgemüse auf Kichererbsenpüree mit Lauch (fleischlos)"
+    ], 
+    "theke1": [
+        "Brathering (L-) / Sahnehering (L+)"
+    ], 
+    "theke2": [
+        "Hähnchensteak in Knusperpanade", 
+        "Steak in Kräuterpanade", 
+        "Nudelauflauf", 
+        "Köfta (Rindfleisch-Gemüsebällchen)"
+    ]
 }
 ```
 
 ## Installation
 
-Der Speiseplan läuft unter Python und nutzt [Beautiful Soup](http://www.crummy.com/software/BeautifulSoup/). Die Installation ist einfach:
+Der Speiseplan läuft unter Python und nutzt [Flask](http://flask.pocoo.org) und [Beautiful Soup](http://www.crummy.com/software/BeautifulSoup/). Die Installation ist einfach:
 
     virtualenv venv
     source venv/bin/activate
