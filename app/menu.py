@@ -86,6 +86,11 @@ def getmenu(mensa):
             praedikat = ''
             continue
 
+        if item[0:10] == 'PASTASAUCE':
+            theke = 'pasta'
+            praedikat = ''
+            continue
+
         if item == 'vegan':
             praedikat = ' (vegan)'
             continue
