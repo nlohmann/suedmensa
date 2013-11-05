@@ -63,59 +63,59 @@ def getmenu(mensa):
     theke = ''
     praedikat = ''
 
-    for item in menu_list[1:]:
-        item = item.strip()
+    for line in menu_list[1:]:
+        line = line.strip()
 
-        if item == 'THEKE 1':
+        if line == 'THEKE 1':
             theke = 'theke1'
             praedikat = ''
             continue
 
-        if item == 'THEKE 2':
+        if line == 'THEKE 2':
             theke = 'theke2'
             praedikat = ''
             continue
 
-        if item == 'THEKE 3':
+        if line == 'THEKE 3':
             theke = 'theke3'
             praedikat = ''
             continue
 
         # deal also with "VITALTHEKE (Theke 2)"
-        if item[0:10] == 'VITALTHEKE':
+        if line[0:10] == 'VITALTHEKE':
             theke = 'vital'
             praedikat = ''
             continue
 
-        if item == 'AKTIONSTHEKE':
+        if line == 'AKTIONSTHEKE':
             theke = 'aktion'
             praedikat = ''
             continue
 
-        if item == 'PASTATHEKE':
+        if line == 'PASTATHEKE':
             theke = 'pasta'
             praedikat = ''
             continue
 
-        if item[0:10] == 'PASTASAUCE':
+        if line[0:10] == 'PASTASAUCE':
             theke = 'pasta'
             praedikat = ''
             continue
 
-        if item == 'vegan':
+        if line == 'vegan':
             praedikat = ' (vegan)'
             continue
 
-        if item == 'fleischlos':
+        if line == 'fleischlos':
             praedikat = ' (fleischlos)'
             continue
 
-        i = item.find("(Preisvorteil")
+        i = line.find("(Preisvorteil")
         if i != -1:
-            item = item[0:i]
+            line = line[0:i]
 
-        if "TAGESTIPP: " in item:
-            item = item[11:] + "(Tagestipp)"
+        if "TAGESTIPP: " in line:
+            line = line[11:] + "(Tagestipp)"
 
         # deal with mensas with only one (unnamed) counter
         if theke == "":
@@ -126,8 +126,24 @@ def getmenu(mensa):
             menu["theken"][theke] = []
 
         # add to list if not empty
-        if item != '':
-            menu["theken"][theke].append((item + praedikat))
+        if line != '':
+            meal = dict()
+
+            if '(fleischlos)' in praedikat:
+                meal['vegetarisch'] = True
+            if '(vegan)' in praedikat:
+                meal['vegan'] = True
+            if '(Tagestipp)' in line:
+                line = line.replace('(Tagestipp)', '').strip()
+                meal['tagestipp'] = True
+            if '(L-)' in line:
+                line = line.replace('(L-)', '').strip()
+                meal['laktosefrei'] = True
+
+            meal['name'] = line
+            menu["theken"][theke].append(meal)
+
+            #menu["theken"][theke].append((line + praedikat))
 
     return menu
 

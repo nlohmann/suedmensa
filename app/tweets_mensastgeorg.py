@@ -92,7 +92,7 @@ def shorten(entry):
     return entry.strip()
 
 def tweets(theke):
-    l = [shorten(x.encode('utf-8')) for x in theke]
+    l = [shorten(x['name'].encode('utf-8')) for x in theke]
     return " | ".join(l)
 
 tweet1 = "VITAL: %s" % tweets(m['theken']['vital'])
@@ -107,4 +107,4 @@ api = tweepy.API(auth)
 
 for tweet in tweets:
     print tweet
-    api.update_status(tweet)
+    #api.update_status(tweet)
