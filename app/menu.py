@@ -3,22 +3,30 @@
 import bs4
 import urllib2
 import json
+import datetime
 
 def getmenu(mensa):
     """
     Returns the current menu as dictionary.
     """
+    # get the menu url from the index page
+    baseurl = 'http://www.studentenwerk-rostock.de'
+    url = baseurl + '/index.php?lang=de&mainmenue=4&submenue=47'
 
-    # build the url from the given mensa
-    baseurl = "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2="
+    # load and parse the menu website
+    html = urllib2.urlopen(url).read()
+    soup = bs4.BeautifulSoup(html, "lxml")
+    menu_links = soup.find_all('a', { "class" : "link_text" })
+
+    # select the chosen mensa menu link (ordered as on the index page)
     detailurls = {
-        "suedmensa": "8432",
-        "stgeorg": "8437",
-        "kleineulme": "8444",
-        "ulme69": "8443",
-        "einstein": "8431"
+        "suedmensa": 0,
+        "stgeorg": 1,
+        "kleineulme": 2,
+        "ulme69": 3,
+        "einstein": 4
     }
-    url = baseurl + detailurls[mensa]
+    url = baseurl + menu_links[detailurls[mensa]]['href']
 
     # load and parse the menu website
     html = urllib2.urlopen(url).read()
@@ -37,9 +45,12 @@ def getmenu(mensa):
     # translate into list; remove empty lines
     menu_list = [x for x in menu_raw.text.split('\n') if x != '']
 
+    # convert the date
+    datestring = datetime.datetime.strptime(menu_list[0].split()[-1], "%d.%m.%Y").date().isoformat()
+
     # the structure of the return object
     menu = {
-        "datum": menu_list[0].split()[-1],
+        "datum": datestring,
         "url": url,
         "theken": {}
     }

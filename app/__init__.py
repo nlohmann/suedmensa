@@ -24,8 +24,11 @@ def menu(mensa='suedmensa'):
         menu = json.dumps(getmenu(mensa), indent=4).decode('unicode-escape').encode('utf-8')
         resp = Response(menu, status=200, mimetype="application/json; charset=utf-8")
     except:
-        error = {"error": "Mensa is unknown."}
-        resp = Response(json.dumps(error), status=400, mimetype="application/json; charset=utf-8")
+        error = {
+            "status": 400,
+            "error": "Mensa is unknown."
+        }
+        resp = Response(json.dumps(error, indent=4), status=400, mimetype="application/json; charset=utf-8")
 
     return resp
 
