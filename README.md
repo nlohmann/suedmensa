@@ -8,33 +8,31 @@ Lädt den Speiseplan der großartigen [Südmensa](http://tinyurl.com/suedmensa) 
 
 ```json
 {
-    "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8432", 
-    "datum": "01.11.2013", 
+    "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8451", 
+    "datum": "2013-11-05", 
     "theken": {
         "theke1": [
-            "Brathering (L-) / Sahnehering (L+)"
+            "Milchreis mit Früchten"
         ], 
         "aktion": [
-            "Asia-Curry (vegan) wahlweise mit Hähnchenstreifen mit Basmatireis (Tagestipp)"
+            "Rumpsteak (L-)"
         ], 
         "theke2": [
-            "Hähnchensteak in Knusperpanade", 
-            "Steak in Kräuterpanade", 
-            "Nudelauflauf", 
-            "Köfta (Rindfleisch-Gemüsebällchen)"
+            "Seelachsfilet in Knusperpanade (L-)", 
+            "Steak Strindberg in Senf-Ei-Hülle (L-)", 
+            "Hackbraten mit Soße, Kartoffeln, Rotkohl (Tagestipp)"
         ], 
         "pasta": [
-            "Pfifferlings-Sahnesoße", 
-            "Tomatensoße mit Hackbällchen"
+            "Pastasoße Mexiko", 
+            "Käsesauce mit Gemüse"
         ], 
         "vital": [
-            "Hühnersuppe", 
-            "Rindersauerbraten mit Sauce (L-)", 
-            "Kabeljau, natur, gebraten (L-)", 
-            "Auberginen, gebacken (L-) (vegan)", 
-            "Makkaroni mit Cashew-Paprikasauce (vegan)", 
-            "vier Mozzarella-Sticks (fleischlos)", 
-            "Pilzgemüse auf Kichererbsenpüree mit Lauch (fleischlos)"
+            "Tomatensuppe", 
+            "Putenbruststreifen mit Gemüse und Paprikasauce", 
+            "gefüllte Zucchini mediterran", 
+            "Gemüsepfanne mit Bulgur (vegan)", 
+            "Kichererbsen-Bohnen-Curry mit Cashewkernen (L-) (vegan)", 
+            "Käsespätzle (fleischlos)"
         ]
     }
 }
