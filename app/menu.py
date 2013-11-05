@@ -113,7 +113,10 @@ def getmenu(mensa):
         # add entry to current counter
         if not theke in menu["theken"]:
             menu["theken"][theke] = []
-        menu["theken"][theke].append((item + praedikat))
+
+        # add to list if not empty
+        if item != '':
+            menu["theken"][theke].append((item + praedikat))
 
     return menu
 

@@ -107,4 +107,4 @@ api = tweepy.API(auth)
 
 for tweet in tweets:
     print tweet
-    #api.update_status(tweet)
+    api.update_status(tweet)
