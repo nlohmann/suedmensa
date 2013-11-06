@@ -32,8 +32,15 @@ def getmenu(mensa):
     html = urllib2.urlopen(url).read()
     soup = bs4.BeautifulSoup(html, "lxml")
 
-    # the 21st table contains the menu
-    menu_raw = soup.find_all('table')[21]
+    # find the last table the contains the word "Speiseplan"
+    tables = soup.find_all('table')
+    table_index = 0
+    for table_index in range(len(tables)-1,0,-1):
+        if "Speiseplan" in tables[table_index].text:
+            break
+
+    # this table contains the menu
+    menu_raw = soup.find_all('table')[table_index]
 
     # replace the 'VITALTHEKE' icon with text
     pic = '<img border="0" src="../../grafiken/webseite/de/vital_theke_100.jpg"/>'
