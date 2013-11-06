@@ -19,7 +19,7 @@ CREDENTIAL_FILE = {
     "stgeorg": "credentials_mensastgeorg.json",
     "kleineulme": "credentials_kleineulme.json",
     "ulme69": "credentials_ulme69.json",
-    "einstein": ""
+    "einstein": "credentials_campuseinstein.json"
 }
 
 CREDENTIALS = json.load(open(os.path.join(__location__, CREDENTIAL_FILE[MENSA]), 'r'))
@@ -174,4 +174,4 @@ api = tweepy.API(auth)
 
 for tweet in tweets:
     print tweet
-    #api.update_status(tweet)
+    api.update_status(tweet)
