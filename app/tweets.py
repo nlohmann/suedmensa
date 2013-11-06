@@ -131,7 +131,7 @@ def combine(tweets):
     """
     Combines short tweets.
     """
-    tweets.sort(lambda x,y: cmp(len(x), len(y)))
+    tweets.sort(key = len)
 
     l = 0
     indices = []
@@ -154,7 +154,7 @@ def add_appetite(tweets):
     """
     Adds "Good appetite" to shortest tweet
     """
-    tweets.sort(lambda x,y: cmp(len(x), len(y)))
+    tweets.sort(key = len)
     
     tweets[0] += " ‖ %s!" % bon_appetit()
     tweets[0] = cap_length(tweets[0])
