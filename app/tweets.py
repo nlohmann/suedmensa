@@ -18,7 +18,7 @@ CREDENTIAL_FILE = {
     "suedmensa": "credentials_suedmensa.json",
     "stgeorg": "credentials_mensastgeorg.json",
     "kleineulme": "credentials_kleineulme.json",
-    "ulme69": "",
+    "ulme69": "credentials_ulme69.json",
     "einstein": ""
 }
 
