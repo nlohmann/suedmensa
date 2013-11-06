@@ -8,34 +8,66 @@ Lädt den Speiseplan der großartigen [Südmensa](http://tinyurl.com/suedmensa) 
 
 ```json
 {
-    "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8451", 
-    "datum": "2013-11-05", 
-    "theken": {
-        "theke1": [
-            "Milchreis mit Früchten"
-        ], 
-        "aktion": [
-            "Rumpsteak (L-)"
-        ], 
-        "theke2": [
-            "Seelachsfilet in Knusperpanade (L-)", 
-            "Steak Strindberg in Senf-Ei-Hülle (L-)", 
-            "Hackbraten mit Soße, Kartoffeln, Rotkohl (Tagestipp)"
-        ], 
-        "pasta": [
-            "Pastasoße Mexiko", 
-            "Käsesauce mit Gemüse"
-        ], 
-        "vital": [
-            "Tomatensuppe", 
-            "Putenbruststreifen mit Gemüse und Paprikasauce", 
-            "gefüllte Zucchini mediterran", 
-            "Gemüsepfanne mit Bulgur (vegan)", 
-            "Kichererbsen-Bohnen-Curry mit Cashewkernen (L-) (vegan)", 
-            "Käsespätzle (fleischlos)"
-        ]
+    {
+        "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8451", 
+        "datum": "2013-11-06", 
+        "theken": {
+            "theke1": [
+                {
+                    "name": "Spaghetti Pesto"
+                }
+            ], 
+            "aktion": [
+                {
+                    "name": "gerolltes Ofenschnitzel in Tomatensauce"
+                }
+            ], 
+            "theke2": [
+                {
+                    "name": "Kräuter-Puten-Frikadelle"
+                }, 
+                {
+                    "name": "Schnitzel XXL", 
+                    "laktosefrei": true
+                }, 
+                {
+                    "name": "Hähnchenpfanne mit Paprika und Erdnüssen", 
+                    "laktosefrei": true
+                }
+            ], 
+            "pasta": [
+                {
+                    "name": "Frischkäse-Schinken-Soße"
+                }, 
+                {
+                    "name": "Hähnchenstreifen in pikanter Tomatensoße"
+                }
+            ], 
+            "vital": [
+                {
+                    "name": "Paprika-Zucchinisuppe"
+                }, 
+                {
+                    "name": "magere Schweinefleischstreifen mit Champignons, Erbsen, Zwiebeln, Paprika und Käse überbacken"
+                }, 
+                {
+                    "name": "Seelachsfilet Spreewälder Art"
+                }, 
+                {
+                    "name": "Gemüsechili", 
+                    "vegan": true
+                }, 
+                {
+                    "vegetarisch": true, 
+                    "name": "Backcamembert mit Preiselbeeren"
+                }, 
+                {
+                    "vegetarisch": true, 
+                    "name": "Kartoffelpizza mit Gemüse"
+                }
+            ]
+        }
     }
-}
 ```
 
 ## Installation
