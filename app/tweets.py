@@ -44,8 +44,8 @@ def cap_length(tweet):
     """
     Shortens the tweet to 140 characters.
     """
-    if len(tweet) > 140:
-        return tweet[0:138]+'…'
+    if len(tweet) >= 140:
+        return tweet[0:140]+'…'
     else:
         return tweet
 
@@ -65,6 +65,7 @@ def shorten(entry):
         (' auf ', '+'),
         (' und ', '+'),
         (' - ', ': '),
+        (', ', ','),
         ('süss', 'süß'),
         ('zwei ', '2 '),
         ('Preiselbeeren', 'Preiselb.'),
@@ -82,6 +83,7 @@ def shorten(entry):
         ('hausgemachte', 'hausg.'),
         ('mediterranes', 'medit.'),
         ('mediterranem', 'medit.'),
+        ('paniertes', 'pan.'),
         ('panade', 'pan.'),
         ('suppe', 'sup.'),
         ('Suppe', 'Sup.'),
@@ -121,8 +123,7 @@ def get_tweets(m):
         meals = shorten(" | ".join(meals))
 
         tweet = "%s: %s" % (names[theke], meals)
-        tweet = cap_length(tweet)
-    
+
         result.append(tweet)
 
     return result
@@ -157,7 +158,6 @@ def add_appetite(tweets):
     tweets.sort(key = len)
     
     tweets[0] += " ‖ %s!" % bon_appetit()
-    tweets[0] = cap_length(tweets[0])
     return tweets
 
 m = getmenu(MENSA)
@@ -167,6 +167,7 @@ if 'kommentar' in m:
 
 tweets = combine(get_tweets(m))
 tweets = add_appetite(tweets)
+tweets = [cap_length(x) for x in tweets]
 
 auth = tweepy.OAuthHandler(CREDENTIALS['CONSUMER_KEY'], CREDENTIALS['CONSUMER_SECRET'])
 auth.set_access_token(CREDENTIALS['ACCESS_KEY'], CREDENTIALS['ACCESS_SECRET'])
