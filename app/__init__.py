@@ -1,5 +1,5 @@
 # everything for Flask
-from flask import Flask, Response
+from flask import Flask, Response, url_for
 from flask.ext.cache import Cache
 from flask.ext.compress import Compress
 
@@ -20,17 +20,12 @@ Compress(app)
 @app.route("/<mensa>")
 @cache.cached(timeout=120)
 def menu(mensa='suedmensa'):
-    try:
-        menu = json.dumps(getmenu(mensa), indent=4).decode('unicode-escape').encode('utf-8')
-        resp = Response(menu, status=200, mimetype="application/json; charset=utf-8")
-    except:
-        error = {
-            "status": 400,
-            "error": "Mensa is unknown."
-        }
-        resp = Response(json.dumps(error, indent=4), status=400, mimetype="application/json; charset=utf-8")
-
-    return resp
+    menus = getmenu(mensa)
+    status = int(menus['status'])
+    if status == 200:
+        menus['href'] = url_for('menu', mensa=mensa, _external=True)
+    payload = json.dumps(menus, indent=4).decode('unicode-escape').encode('utf-8')
+    return Response(payload, status=status, mimetype="application/json; charset=utf-8")
 
 if __name__ == "__main__":
     app.run()

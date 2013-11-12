@@ -9,16 +9,8 @@ def getmenu(mensa):
     """
     Returns the current menu as dictionary.
     """
-    # get the menu url from the index page
-    baseurl = 'http://www.studentenwerk-rostock.de'
-    url = baseurl + '/index.php?lang=de&mainmenue=4&submenue=47'
 
-    # load and parse the menu website
-    html = urllib2.urlopen(url).read()
-    soup = bs4.BeautifulSoup(html, "lxml")
-    menu_links = soup.find_all('a', { "class" : "link_text" })
-
-    # select the chosen mensa menu link (ordered as on the index page)
+    # the known mensas
     detailurls = {
         "suedmensa": 0,
         "stgeorg": 1,
@@ -26,6 +18,30 @@ def getmenu(mensa):
         "ulme69": 3,
         "einstein": 4
     }
+
+    # abort if mensa is unknown
+    if not mensa in detailurls:
+        return {"status": 400, "error": "mensa unknown"}
+
+    # get the menu url from the index page
+    baseurl = 'http://www.studentenwerk-rostock.de'
+    url = baseurl + '/index.php?lang=de&mainmenue=4&submenue=47'
+
+    # load and parse the menu website
+    try:
+        html = urllib2.urlopen(url).read()
+    except urllib2.URLError as e:
+        # abort if server times out or is unreachable
+        return {"status": 503, "error": "server not reachable"}
+
+    soup = bs4.BeautifulSoup(html, "lxml")
+    menu_links = soup.find_all('a', { "class" : "link_text" })
+
+    # abort if no menus found
+    if not menu_links:
+        return {"status": 502, "error": "no menus found"}
+
+    # select the chosen mensa menu link (ordered as on the index page)
     url = baseurl + menu_links[detailurls[mensa]]['href']
 
     # load and parse the menu website
@@ -59,7 +75,8 @@ def getmenu(mensa):
     menu = {
         "datum": datestring,
         "url": url,
-        "theken": {}
+        "theken": {},
+        "status": 200
     }
 
     # in case of holidays, return commented, empty menu
