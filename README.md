@@ -8,66 +8,68 @@ Lädt den Speiseplan der großartigen [Südmensa](http://tinyurl.com/suedmensa) 
 
 ```json
 {
-    {
-        "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8451", 
-        "datum": "2013-11-06", 
-        "theken": {
-            "theke1": [
-                {
-                    "name": "Spaghetti Pesto"
-                }
-            ], 
-            "aktion": [
-                {
-                    "name": "gerolltes Ofenschnitzel in Tomatensauce"
-                }
-            ], 
-            "theke2": [
-                {
-                    "name": "Kräuter-Puten-Frikadelle"
-                }, 
-                {
-                    "name": "Schnitzel XXL", 
-                    "laktosefrei": true
-                }, 
-                {
-                    "name": "Hähnchenpfanne mit Paprika und Erdnüssen", 
-                    "laktosefrei": true
-                }
-            ], 
-            "pasta": [
-                {
-                    "name": "Frischkäse-Schinken-Soße"
-                }, 
-                {
-                    "name": "Hähnchenstreifen in pikanter Tomatensoße"
-                }
-            ], 
-            "vital": [
-                {
-                    "name": "Paprika-Zucchinisuppe"
-                }, 
-                {
-                    "name": "magere Schweinefleischstreifen mit Champignons, Erbsen, Zwiebeln, Paprika und Käse überbacken"
-                }, 
-                {
-                    "name": "Seelachsfilet Spreewälder Art"
-                }, 
-                {
-                    "name": "Gemüsechili", 
-                    "vegan": true
-                }, 
-                {
-                    "vegetarisch": true, 
-                    "name": "Backcamembert mit Preiselbeeren"
-                }, 
-                {
-                    "vegetarisch": true, 
-                    "name": "Kartoffelpizza mit Gemüse"
-                }
-            ]
-        }
+    "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8492", 
+    "status": 200, 
+    "href": "http://localhost:5000/suedmensa", 
+    "datum": "2013-11-12", 
+    "theken": {
+        "theke1": [
+            {
+                "name": "Eintopf"
+            }
+        ], 
+        "aktion": [
+            {
+                "name": "American Roast, Remoulade"
+            }
+        ], 
+        "theke2": [
+            {
+                "name": "Steak mit Zwiebelrahm"
+            }, 
+            {
+                "name": "Geflügelhacksteak", 
+                "laktosefrei": true
+            }, 
+            {
+                "name": "Flunder, paniert", 
+                "laktosefrei": true
+            }
+        ], 
+        "pasta": [
+            {
+                "name": "Hackfleischsoße mit frischen Champignons"
+            }, 
+            {
+                "name": "Tomatensoße mit Hirtenkäse"
+            }
+        ], 
+        "vital": [
+            {
+                "name": "Möhren-Mango-Suppe"
+            }, 
+            {
+                "name": "Hähnchenbrust im Karotten-Zucchinimantel", 
+                "laktosefrei": true
+            }, 
+            {
+                "name": "Gemüse-Kartoffelpfanne mit Mini-Hacksteaks, Joghurt Dip"
+            }, 
+            {
+                "name": "Curry-Burger", 
+                "vegan": true
+            }, 
+            {
+                "vegetarisch": true, 
+                "name": "Gemüsestrudel"
+            }, 
+            {
+                "vegetarisch": true, 
+                "name": "zwei gekochte Eier mit Senfsauce"
+            }
+        ]
     }
+}
 ```
 
 ## Installation
