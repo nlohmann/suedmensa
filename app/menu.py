@@ -75,6 +75,7 @@ def getmenu(mensa):
     menu = {
         "datum": datestring,
         "url": url,
+        "mensa": mensa,
         "theken": {},
         "status": 200
     }

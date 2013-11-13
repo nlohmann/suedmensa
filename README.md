@@ -8,67 +8,76 @@ Lädt den Speiseplan der großartigen [Südmensa](http://tinyurl.com/suedmensa) 
 
 ```json
 {
-    "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8492", 
     "status": 200, 
-    "href": "http://localhost:5000/suedmensa", 
-    "datum": "2013-11-12", 
+    "mensa": "suedmensa", 
     "theken": {
         "theke1": [
             {
-                "name": "Eintopf"
+                "name": "Spätzle-Pilz-Pfanne"
             }
         ], 
         "aktion": [
             {
-                "name": "American Roast, Remoulade"
+                "name": "Putensteak Champignons"
             }
         ], 
         "theke2": [
             {
-                "name": "Steak mit Zwiebelrahm"
+                "name": "Steak mit Würzfleisch überbacken"
             }, 
             {
-                "name": "Geflügelhacksteak", 
+                "name": "Buntbarschfilet, gebraten", 
                 "laktosefrei": true
             }, 
             {
-                "name": "Flunder, paniert", 
-                "laktosefrei": true
+                "tagestipp": true, 
+                "name": "Dönerpfanne mit Tzatziki (Kalbfleisch), Reis"
+            }, 
+            {
+                "name": "Hefeklöße mit Fruchtsuppe ODER Germknödel"
             }
         ], 
         "pasta": [
             {
-                "name": "Hackfleischsoße mit frischen Champignons"
+                "name": "Käsesoße mit Putenstreifen"
             }, 
             {
-                "name": "Tomatensoße mit Hirtenkäse"
+                "name": "Tomatensauce mit frischem Gemüse"
             }
         ], 
         "vital": [
             {
-                "name": "Möhren-Mango-Suppe"
+                "name": "Kartoffelsuppe"
             }, 
             {
-                "name": "Hähnchenbrust im Karotten-Zucchinimantel", 
+                "name": "marinierte Hähnchenbruststreifen  auf frischem Salat (L+)", 
                 "laktosefrei": true
             }, 
             {
-                "name": "Gemüse-Kartoffelpfanne mit Mini-Hacksteaks, Joghurt Dip"
+                "name": "Puten-Gemüse-Bällchen in Paprikasauce"
             }, 
             {
-                "name": "Curry-Burger", 
+                "name": "Spaghetti Carbonara Art", 
                 "vegan": true
             }, 
             {
-                "vegetarisch": true, 
-                "name": "Gemüsestrudel"
+                "laktosefrei": true, 
+                "vegan": true, 
+                "name": "Kartoffelschnitzel"
             }, 
             {
                 "vegetarisch": true, 
-                "name": "zwei gekochte Eier mit Senfsauce"
+                "name": "Gnocchipfanne mit Gemüse und Hirtenkäse"
+            }, 
+            {
+                "vegetarisch": true, 
+                "name": "Kartoffelrösti mit Tomate und Mozzarella überbacken"
             }
         ]
-    }
+    }, 
+    "url": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=47&type=details&detail1=1&detail2=8511", 
+    "datum": "2013-11-13", 
+    "href": "http://localhost:5000/suedmensa.json"
 }
 ```
 

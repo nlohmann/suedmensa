@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Speiseplan">
+    <meta name="author" content="Niels Lohmann">
+
+    <title>Speiseplan {{menu.mensa|mensaname}}</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>
+          <span class="pull-right">
+              <a href="https://twitter.com/{{menu.mensa|twitter}}"><i class="fa fa-twitter text-muted"></i></a>
+              <a href="https://foursquare.com/v/{{menu.mensa|foursquare}}"><i class="fa fa-foursquare text-muted"></i></a>
+          </span>
+          {{menu.mensa|mensaname}}
+      </h2>
+
+      {% for key, value in menu.theken.iteritems() %}
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">{{ key|thekenname }}</h3>
+          </div>
+          <ul class="list-group">
+              {% for meal in value %}
+              <li class="list-group-item">
+                  {% if meal.laktosefrei %}
+                  <span style="margin-left: 1em;" class="label label-success pull-right">laktosefrei</span>
+                  {% endif %}
+                  {% if meal.tagestipp %}
+                  <span class="label label-primary pull-right">Tagestipp</span>
+                  {% endif %}
+                  {% if meal.vegan %}
+                  <span style="margin-left: 1em;" class="label label-success pull-right">vegan</span>
+                  {% endif %}
+                  {% if meal.vegetarisch %}
+                  <span style="margin-left: 1em;" class="label label-success pull-right">vegetarisch</span>
+                  {% endif %}
+                  {{meal.name}}
+              </li>
+              {% endfor %}
+          </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
