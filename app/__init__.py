@@ -36,13 +36,13 @@ def menu_negotiate(mensa='suedmensa'):
         return menu_html(mensa)
 
 @app.route("/<mensa>.html")
-@cache.cached(timeout=120)
+#@cache.cached(timeout=120)
 def menu_html(mensa):
     menu = getmenu(mensa)
     return render_template('menu.html', menu=menu)
 
 @app.route("/<mensa>.json")
-@cache.cached(timeout=120)
+#@cache.cached(timeout=120)
 def menu_json(mensa):
     menus = getmenu(mensa)
     status = int(menus['status'])
@@ -52,7 +52,7 @@ def menu_json(mensa):
     return Response(payload, status=status, mimetype="application/json; charset=utf-8")
 
 @app.route('/<mensa>.atom')
-@cache.cached(timeout=120)
+#@cache.cached(timeout=120)
 def menu_atom(mensa):
     feed = AtomFeed(mensaname(mensa).encode('ascii', 'xmlcharrefreplace'),
                     feed_url=request.url, url=request.url_root)
