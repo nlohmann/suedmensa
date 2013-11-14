@@ -97,7 +97,7 @@ def twitter(s):
     names = {
         "suedmensa": "suedmensa",
         "stgeorg": "mensastgeorg",
-        "kleineulme": "kleineilme",
+        "kleineulme": "kleineulme",
         "ulme69": "ulme69",
         "einstein": "campuseinstein"
     }
