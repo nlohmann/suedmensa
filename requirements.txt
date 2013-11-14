@@ -4,8 +4,13 @@ Flask-Compress==1.0.0
 Jinja2==2.7.1
 MarkupSafe==0.18
 Werkzeug==0.9.4
+astroid==1.0.1
 beautifulsoup4==4.3.2
+iso8601==0.1.8
 itsdangerous==0.23
+logilab-common==0.60.0
 lxml==3.2.3
+pylint==1.0.0
+six==1.4.1
 tweepy==2.1
 wsgiref==0.1.2

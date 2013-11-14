@@ -13,6 +13,8 @@
 
     <title>Speiseplan {{menu.mensa|mensaname}}</title>
 
+    <link rel="alternate" type="application/atom+xml" title="Speiseplan für {{menu.mensa|mensaname}}" href="/{{menu.mensa}}.atom">
+
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css">
   </head>
@@ -20,10 +22,11 @@
   <body>
     <div class="container">
       <h2>
-          <span class="pull-right">
+          <small class="pull-right">
               <a href="https://twitter.com/{{menu.mensa|twitter}}"><i class="fa fa-twitter text-muted"></i></a>
               <a href="https://foursquare.com/v/{{menu.mensa|foursquare}}"><i class="fa fa-foursquare text-muted"></i></a>
-          </span>
+              <a href="/{{menu.mensa}}.atom"><i class="fa fa-rss-square text-muted"></i></a>
+          </small>
           {{menu.mensa|mensaname}}
       </h2>
 

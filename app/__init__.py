@@ -1,9 +1,15 @@
 # coding: utf8
 
 # everything for Flask
-from flask import Flask, Response, url_for, render_template
+from flask import Flask, Response, url_for, render_template, request
 from flask.ext.cache import Cache
 from flask.ext.compress import Compress
+from werkzeug.contrib.atom import AtomFeed
+import iso8601
+import datetime
+import locale
+
+locale.setlocale(locale.LC_TIME, 'de_DE.UTF-8')
 
 # Suedmensa
 import json
@@ -19,6 +25,13 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 # enable compression
 Compress(app)
 
+@app.route("/")
+@app.route("/<mensa>")
+@cache.cached(timeout=120)
+def menu_html(mensa='suedmensa'):
+    menu = getmenu(mensa)
+    return render_template('menu.html', menu=menu)
+
 @app.route("/<mensa>.json")
 @cache.cached(timeout=120)
 def menu_json(mensa):
@@ -29,12 +42,22 @@ def menu_json(mensa):
     payload = json.dumps(menus, indent=4).decode('unicode-escape').encode('utf-8')
     return Response(payload, status=status, mimetype="application/json; charset=utf-8")
 
-@app.route("/")
-@app.route("/<mensa>")
-@cache.cached(timeout=120)
-def menu_html(mensa='suedmensa'):
-    menu = getmenu(mensa)
-    return render_template('menu.html', menu=menu)
+@app.route('/<mensa>.atom')
+def recent_feed(mensa):
+    feed = AtomFeed(mensaname(mensa).encode('ascii', 'xmlcharrefreplace'),
+                    feed_url=request.url, url=request.url_root)
+    menu = getmenu('suedmensa')
+    menudate = iso8601.parse_date(menu['datum'])
+
+    feed.add('Speiseplan %s' % datetime.datetime.strftime(menudate, "%A, %d.%m.%Y"), render_template('atom.html', menu=menu),
+             content_type='html',
+             author=u'Studentenwerk Rostock',
+             url=menu['url'],
+             updated=menudate,
+             published=menudate,
+             )
+    return feed.get_response()
+
 
 @app.template_filter('mensaname')
 def mensaname(s):

@@ -1,0 +1,10 @@
+<h1>{{menu.mensa|mensaname}}</h1>
+
+{% for key, value in menu.theken.iteritems() %}
+<h2>{{ key|thekenname }}</h2>
+<ul>
+  {% for meal in value %}
+     <li>{{meal.name}}</li>
+  {% endfor %}
+</ul>
+{% endfor %}
