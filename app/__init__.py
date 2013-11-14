@@ -95,11 +95,11 @@ def thekenname(s):
 @app.template_filter('twitter')
 def twitter(s):
     names = {
-        "suedmensa": "Suedmensa",
-        "stgeorg": "MensaStGeorg",
-        "kleineulme": "KleineUlme",
-        "ulme69": "Ulme69",
-        "einstein": "CampusEinstein"
+        "suedmensa": "suedmensa",
+        "stgeorg": "mensastgeorg",
+        "kleineulme": "kleineilme",
+        "ulme69": "ulme69",
+        "einstein": "campuseinstein"
     }
     return names[s]
 
