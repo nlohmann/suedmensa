@@ -27,8 +27,17 @@ Compress(app)
 
 @app.route("/")
 @app.route("/<mensa>")
+def menu_negotiate(mensa='suedmensa'):
+    if request.accept_mimetypes.best == 'application/json':
+        return menu_json(mensa)
+    elif request.accept_mimetypes.best == 'application/atom+xml':
+        return menu_atom(mensa)
+    else:
+        return menu_html(mensa)
+
+@app.route("/<mensa>.html")
 @cache.cached(timeout=120)
-def menu_html(mensa='suedmensa'):
+def menu_html(mensa):
     menu = getmenu(mensa)
     return render_template('menu.html', menu=menu)
 
@@ -43,7 +52,8 @@ def menu_json(mensa):
     return Response(payload, status=status, mimetype="application/json; charset=utf-8")
 
 @app.route('/<mensa>.atom')
-def recent_feed(mensa):
+@cache.cached(timeout=120)
+def menu_atom(mensa):
     feed = AtomFeed(mensaname(mensa).encode('ascii', 'xmlcharrefreplace'),
                     feed_url=request.url, url=request.url_root)
     menu = getmenu('suedmensa')
