@@ -113,9 +113,9 @@ def filter_thekennameshort(s):
 def filter_color(s):
     names = {
         "suedmensa": u"#66CCFF",
-        "stgeorg": u"#CCFF66",
-        "kleineulme": u"#FF6666",
-        "ulme69": u"#FFCC66",
+        "stgeorg": u"#FFCC66",
+        "kleineulme": u"#CCFF66",
+        "ulme69": u"#FF6666",
         "einstein": u"#FF66FF"
     }
     return names[s]
