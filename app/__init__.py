@@ -54,7 +54,7 @@ def menu_json(mensa):
 @app.route('/<mensa>.atom')
 #@cache.cached(timeout=120)
 def menu_atom(mensa):
-    feed = AtomFeed(mensaname(mensa).encode('ascii', 'xmlcharrefreplace'),
+    feed = AtomFeed(filter_mensaname(mensa).encode('ascii', 'xmlcharrefreplace'),
                     feed_url=request.url, url=request.url_root)
     menu = getmenu('suedmensa')
     menudate = iso8601.parse_date(menu['datum'])
