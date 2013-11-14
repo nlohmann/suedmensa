@@ -68,9 +68,14 @@ def menu_atom(mensa):
              )
     return feed.get_response()
 
+@app.route("/<mensa>-pic.html")
+#@cache.cached(timeout=120)
+def menu_pic_html(mensa):
+    menu = getmenu(mensa)
+    return render_template('pics.html', menu=menu)
 
 @app.template_filter('mensaname')
-def mensaname(s):
+def filter_mensaname(s):
     names = {
         "suedmensa": u"Südmensa",
         "stgeorg": u"Mensa St.-Georg-Straße",
@@ -81,7 +86,7 @@ def mensaname(s):
     return names[s]
 
 @app.template_filter('thekenname')
-def thekenname(s):
+def filter_thekenname(s):
     names = {
         "theke1": u"Theke 1",
         "theke2": u"Theke 2",
@@ -92,8 +97,31 @@ def thekenname(s):
     }
     return names[s]
 
+@app.template_filter('thekennameshort')
+def filter_thekennameshort(s):
+    names = {
+        "theke1": u"Theke 1",
+        "theke2": u"Theke 2",
+        "theke3": u"Theke 3",
+        "aktion": u"Aktion",
+        "pasta": u"Pasta",
+        "vital": u"Vital"
+    }
+    return names[s]
+
+@app.template_filter('color')
+def filter_color(s):
+    names = {
+        "suedmensa": u"#66CCFF",
+        "stgeorg": u"#CCFF66",
+        "kleineulme": u"#FF6666",
+        "ulme69": u"#FFCC66",
+        "einstein": u"#FF66FF"
+    }
+    return names[s]
+
 @app.template_filter('twitter')
-def twitter(s):
+def filter_twitter(s):
     names = {
         "suedmensa": "suedmensa",
         "stgeorg": "mensastgeorg",
@@ -104,7 +132,7 @@ def twitter(s):
     return names[s]
 
 @app.template_filter('foursquare')
-def foursquare(s):
+def filter_foursquare(s):
     names = {
         "suedmensa": "4b54317cf964a52041b427e3",
         "stgeorg": "4c612da4048b9521cc654278",

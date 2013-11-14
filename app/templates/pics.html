@@ -1,0 +1,47 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/static/avenir.css">
+    <style type="text/css">
+    html {
+        width: 402px;
+        height: 402px;
+        background-color: {{menu.mensa|color}};
+        background-size:402px 402px;
+        font-family: avenir, avenir-web;
+    }
+    body {
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: normal;
+        font-size: 12pt;
+        background-image: url('/static/background.png');
+        background-size: 402px 402px;
+        padding: 10px;
+        margin: 0;
+        height: 402px;
+    }
+    .title {
+        font-weight: bold;
+        font-size: 12pt;
+        text-transform: uppercase;
+    }
+    .theke {
+        padding-bottom: 0.5em;
+    }
+    </style>
+</head>
+
+<body>
+{% for key, value in menu.theken.iteritems() %}
+<div class="theke">
+<span class="title">{{ key|thekennameshort }}</span>
+{% for meal in value %}
+{{meal.name}}
+{% if not loop.last %}
+|
+{% endif %}
+{% endfor %}
+</div>
+{% endfor %}
+</body>
+</html>
