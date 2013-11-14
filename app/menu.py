@@ -168,7 +168,14 @@ def getmenu(mensa):
             meal['name'] = line
             menu["theken"][theke].append(meal)
 
-            #menu["theken"][theke].append((line + praedikat))
+    # move further predicates
+    for theke in menu['theken']:
+        for meal in menu['theken'][theke]:
+            if '(vegan)' in meal['name']:
+                meal['name'] = meal['name'].replace('(vegan)', '')
+                meal['name'] = meal['name'].replace('  ', ' ')
+                meal['name'] = meal['name'].strip()
+                meal['vegan'] = True
 
     return menu
 
