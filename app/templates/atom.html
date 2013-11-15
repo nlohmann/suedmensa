@@ -1,5 +1,9 @@
-<img src="{{ url_for('static', filename='%s/favicon-256.png' % menu.mensa, _external=True) }}" style="float: right; height: 64px; width: 64px;" alt="{{menu.name}}">
+<html>
+<head>
+<meta property='og:image' content='{{ url_for('static', filename='%s/favicon-256.png' % menu.mensa, _external=True) }}' />
+</head>
 
+<body>
 {% for key, value in menu.theken.iteritems() %}
 <h2>{{ key|thekenname }}</h2>
 <ul>
@@ -8,3 +12,7 @@
   {% endfor %}
 </ul>
 {% endfor %}
+
+<img src="{{ url_for('static', filename='%s/favicon-256.png' % menu.mensa, _external=True) }}" style="float: right; height: 64px; width: 64px;" alt="{{menu.name}}">
+</body>
+</html>
