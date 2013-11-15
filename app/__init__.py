@@ -57,7 +57,7 @@ def menu_atom(mensa):
     menu = getmenu('suedmensa')
     menudate = iso8601.parse_date(menu['datum'])
 
-    feed = AtomFeed(title=filter_mensaname(mensa).encode('ascii', 'xmlcharrefreplace'),
+    feed = AtomFeed(title=menu['name'].encode('ascii', 'xmlcharrefreplace'),
                     title_type='html',
                     updated=menudate,
                     icon=url_for('static', filename='%s/favicon-256.png' % mensa, _external=True),
