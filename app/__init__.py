@@ -54,18 +54,23 @@ def menu_json(mensa):
 @app.route('/<mensa>.atom')
 #@cache.cached(timeout=120)
 def menu_atom(mensa):
-    feed = AtomFeed(filter_mensaname(mensa).encode('ascii', 'xmlcharrefreplace'),
-                    feed_url=request.url, url=request.url_root)
     menu = getmenu('suedmensa')
     menudate = iso8601.parse_date(menu['datum'])
 
-    feed.add('Speiseplan %s' % datetime.datetime.strftime(menudate, "%A, %d.%m.%Y"), render_template('atom.html', menu=menu),
+    feed = AtomFeed(title=filter_mensaname(mensa).encode('ascii', 'xmlcharrefreplace'),
+                    title_type='html',
+                    updated=menudate,
+                    icon=url_for('static', filename='%s/favicon-256.png' % mensa, _external=True),
+                    feed_url=request.url, url=request.url_root)
+
+    feed.add(title='Speiseplan %s' % datetime.datetime.strftime(menudate, "%A, %d.%m.%Y"),
+             content=render_template('atom.html', menu=menu),
              content_type='html',
              author=u'Studentenwerk Rostock',
              url=menu['url'],
              updated=menudate,
-             published=menudate,
-             )
+             published=menudate)
+
     return feed.get_response()
 
 @app.route("/<mensa>-pic.html")
