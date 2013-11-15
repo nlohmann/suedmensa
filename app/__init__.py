@@ -57,16 +57,48 @@ def menu_atom(mensa):
     menu = getmenu(mensa)
     menudate = iso8601.parse_date(menu['datum'])
 
-    feed = AtomFeed(title=menu['name'].encode('ascii', 'xmlcharrefreplace'),
-                    title_type='html',
+    feed = AtomFeed(title=menu['name'],
+                    title_type='text',
+                    subtitle=u'Täglicher Speiseplan der %s.' % menu['name'],
+                    subtitle_type='text',
+                    author=[
+                        {
+                            "name": "Studentenwerk Rostock (Rohdaten)",
+                            "uri": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=109"
+                        },
+                        {
+                            "name": "Niels Lohmann (Feed)",
+                            "email": "niels.lohmann@gmail.com"
+                        }
+                    ],
+                    links=[
+                        {
+                            "href": "https://twitter.com/%s" % menu['twitter'],
+                            "title": "%s auf Twitter" % menu['name'],
+                            "hreflang": "de-DE"
+                        }
+                    ],
                     updated=menudate,
+                    url=url_for('menu_html', mensa=mensa, _external=True),
                     icon=url_for('static', filename='%s/favicon-256.png' % mensa, _external=True),
-                    feed_url=request.url, url=request.url_root)
+                    feed_url=request.url)
 
     feed.add(title='Speiseplan %s' % datetime.datetime.strftime(menudate, "%A, %d.%m.%Y"),
+             title_type='text',
              content=render_template('atom.html', menu=menu),
              content_type='html',
-             author=u'Studentenwerk Rostock',
+             summary=u'Speiseplan der %s für den %s' % (menu['name'], datetime.datetime.strftime(menudate, "%A, %d.%m.%Y")),
+             summary_type='text',
+             author=[
+                 {
+                     "name": "Studentenwerk Rostock (Rohdaten)",
+                     "uri": "http://www.studentenwerk-rostock.de/index.php?lang=de&mainmenue=4&submenue=109"
+                 },
+                 {
+                     "name": "Niels Lohmann (Feed)",
+                     "email": "niels.lohmann@gmail.com"
+                 }
+             ],
              url=menu['url'],
              updated=menudate,
              published=menudate)
