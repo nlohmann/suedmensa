@@ -48,7 +48,7 @@ def menu_json(mensa):
     status = int(menus['status'])
     if status == 200:
         menus['href'] = url_for('menu_json', mensa=mensa, _external=True)
-    payload = json.dumps(menus, indent=4).decode('unicode-escape').encode('utf-8')
+    payload = json.dumps(menus, indent=4, sort_keys=True).decode('unicode-escape').encode('utf-8')
     return Response(payload, status=status, mimetype="application/json; charset=utf-8")
 
 @app.route('/<mensa>.atom')
@@ -79,17 +79,6 @@ def menu_pic_html(mensa):
     menu = getmenu(mensa)
     return render_template('pics.html', menu=menu)
 
-@app.template_filter('mensaname')
-def filter_mensaname(s):
-    names = {
-        "suedmensa": u"Südmensa",
-        "stgeorg": u"Mensa St.-Georg-Straße",
-        "kleineulme": u"Kleine Mensa Ulme",
-        "ulme69": u"Mensa Ulme 69",
-        "einstein": u"Campus Cafeteria Einstein"
-    }
-    return names[s]
-
 @app.template_filter('thekenname')
 def filter_thekenname(s):
     names = {
@@ -111,39 +100,6 @@ def filter_thekennameshort(s):
         "aktion": u"Aktion",
         "pasta": u"Pasta",
         "vital": u"Vital"
-    }
-    return names[s]
-
-@app.template_filter('color')
-def filter_color(s):
-    names = {
-        "suedmensa": u"#00b2ff",
-        "stgeorg": u"#ffe900",
-        "kleineulme": u"#92ec00",
-        "ulme69": u"#d8005f",
-        "einstein": u"#ffa500"
-    }
-    return names[s]
-
-@app.template_filter('twitter')
-def filter_twitter(s):
-    names = {
-        "suedmensa": "suedmensa",
-        "stgeorg": "mensastgeorg",
-        "kleineulme": "kleineulme",
-        "ulme69": "ulme69",
-        "einstein": "campuseinstein"
-    }
-    return names[s]
-
-@app.template_filter('foursquare')
-def filter_foursquare(s):
-    names = {
-        "suedmensa": "4b54317cf964a52041b427e3",
-        "stgeorg": "4c612da4048b9521cc654278",
-        "kleineulme": "4e450efc1f6e0a1ba5e4bc84",
-        "ulme69": "4e96b65b9adf7f572e0908f4",
-        "einstein": "51b1b494498ee6881086d1d0"
     }
     return names[s]
 
