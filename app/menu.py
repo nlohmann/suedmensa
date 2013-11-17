@@ -131,8 +131,11 @@ def getmenu(mensa):
     # translate into list; remove empty lines
     menu_list = [x for x in menu_raw.text.split('\n') if x != '']
 
-    # convert the date
-    datestring = datetime.datetime.strptime(menu_list[0].split()[-1], "%d.%m.%Y").date().isoformat()
+    try:
+        # convert the date
+        datestring = datetime.datetime.strptime(menu_list[0].split()[-1], "%d.%m.%Y").date().isoformat()
+    except:
+        return {"status": 502, "error": "no menus found"}
 
     # the structure of the return object
     menu = {
