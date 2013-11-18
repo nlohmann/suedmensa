@@ -1,7 +1,7 @@
 # coding: utf8
 
 # everything for Flask
-from flask import Flask, Response, url_for, render_template, request
+from flask import Flask, Response, url_for, render_template, request, redirect
 from flask.ext.cache import Cache
 from flask.ext.compress import Compress
 from werkzeug.contrib.atom import AtomFeed
@@ -32,6 +32,8 @@ def menu_negotiate(mensa='suedmensa'):
         return menu_json(mensa)
     elif request.accept_mimetypes.best == 'application/atom+xml':
         return menu_atom(mensa)
+    elif request.accept_mimetypes.best == 'application/image/png':
+        return menu_png(mensa)
     else:
         return menu_html(mensa)
 
@@ -104,6 +106,17 @@ def menu_atom(mensa):
              published=menudate)
 
     return feed.get_response()
+
+@app.route("/<mensa>.png")
+def menu_png(mensa):
+    dropbox_links = {
+        "suedmensa": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/suedmensa.png",
+        "stgeorg": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/stgeorg.png",
+        "kleineulme": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/kleineulme.png",
+        "ulme69": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/ulme69.png",
+        "einstein": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/einstein.png"
+    }
+    return redirect(dropbox_links[mensa])
 
 @app.route("/<mensa>-pic.html")
 #@cache.cached(timeout=120)
