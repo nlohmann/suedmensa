@@ -8,6 +8,7 @@ from werkzeug.contrib.atom import AtomFeed
 import iso8601
 import datetime
 import locale
+import urllib
 
 locale.setlocale(locale.LC_TIME, 'de_DE.UTF-8')
 
@@ -109,14 +110,8 @@ def menu_atom(mensa):
 
 @app.route("/<mensa>.png")
 def menu_png(mensa):
-    dropbox_links = {
-        "suedmensa": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/suedmensa.png",
-        "stgeorg": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/stgeorg.png",
-        "kleineulme": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/kleineulme.png",
-        "ulme69": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/ulme69.png",
-        "einstein": "https://dl.dropboxusercontent.com/u/3658551/suedmensa/einstein.png"
-    }
-    return redirect(dropbox_links[mensa])
+    img = urllib.urlopen("https://dl.dropboxusercontent.com/u/3658551/suedmensa/%s.png" % mensa).read()
+    return Response(img, mimetype="image/png")
 
 @app.route("/<mensa>-pic.html")
 #@cache.cached(timeout=120)
