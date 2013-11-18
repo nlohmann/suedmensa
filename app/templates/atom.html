@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta property='og:image' content='{{ url_for('static', filename='%s/favicon-256.png' % menu.mensa, _external=True) }}' />
+<meta property='og:image' content='{{ url_for('static', filename='%s/avatar.png' % menu.mensa, _external=True) }}' />
 </head>
 
 <body>
@@ -13,6 +13,6 @@
 </ul>
 {% endfor %}
 
-<img src="{{ url_for('static', filename='%s/favicon-256.png' % menu.mensa, _external=True) }}" style="float: right; height: 64px; width: 64px;" alt="{{menu.name}}">
+<img src="{{ url_for('static', filename='%s/avatar.png' % menu.mensa, _external=True) }}" style="height: 32px; width: 32px;" alt="{{menu.name}}">
 </body>
 </html>
