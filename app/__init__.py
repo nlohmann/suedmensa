@@ -39,13 +39,13 @@ def menu_negotiate(mensa='suedmensa'):
         return menu_html(mensa)
 
 @app.route("/<mensa>.html")
-#@cache.cached(timeout=120)
+@cache.cached(timeout=120)
 def menu_html(mensa):
     menu = getmenu(mensa)
     return render_template('menu.html', menu=menu)
 
 @app.route("/<mensa>.json")
-#@cache.cached(timeout=120)
+@cache.cached(timeout=120)
 def menu_json(mensa):
     menus = getmenu(mensa)
     status = int(menus['status'])
@@ -55,7 +55,7 @@ def menu_json(mensa):
     return Response(payload, status=status, mimetype="application/json; charset=utf-8")
 
 @app.route('/<mensa>.atom')
-#@cache.cached(timeout=120)
+@cache.cached(timeout=120)
 def menu_atom(mensa):
     menu = getmenu(mensa)
     menudate = iso8601.parse_date(menu['datum'])
@@ -109,12 +109,13 @@ def menu_atom(mensa):
     return feed.get_response()
 
 @app.route("/<mensa>.png")
+@cache.cached(timeout=120)
 def menu_png(mensa):
     img = urllib.urlopen("https://dl.dropboxusercontent.com/u/3658551/suedmensa/%s.png" % mensa).read()
     return Response(img, mimetype="image/png")
 
 @app.route("/<mensa>-pic.html")
-#@cache.cached(timeout=120)
+@cache.cached(timeout=120)
 def menu_pic_html(mensa):
     menu = getmenu(mensa)
     return render_template('pics.html', menu=menu)
