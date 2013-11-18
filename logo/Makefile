@@ -1,4 +1,4 @@
-SIZE = 512
+SIZE = 1024
 
 avatars: logo.png
 	convert logo.png -background '#00b2ff' -flatten avatar_suedmensa.png
