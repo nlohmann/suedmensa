@@ -92,7 +92,7 @@ def getmenu(mensa):
 
     # load and parse the menu website
     try:
-        html = urllib2.urlopen(url).read()
+        html = urllib2.urlopen(url=url, timeout=10).read()
     except urllib2.URLError as e:
         # abort if server times out or is unreachable
         return {"status": 503, "error": "server not reachable"}
