@@ -23,7 +23,7 @@ app.debug = True
 # set cache
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
-# enable compression
+# enable gzip compression
 Compress(app)
 
 @app.route("/")
