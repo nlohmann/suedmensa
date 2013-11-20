@@ -56,6 +56,7 @@ favicons: avatars
 		convert pics/avatar/$$MENSA.png -resize 114x114 pics/favicons/$$MENSA/apple-touch-icon-114x114-precomposed.png; \
 		convert pics/avatar/$$MENSA.png -resize 120x120 pics/favicons/$$MENSA/apple-touch-icon-120x120-precomposed.png; \
 		convert pics/avatar/$$MENSA.png -resize 144x144 pics/favicons/$$MENSA/apple-touch-icon-144x144-precomposed.png; \
+		convert pics/avatar/$$MENSA.png -resize 152x152 pics/favicons/$$MENSA/apple-touch-icon-152x152-precomposed.png; \
 	done
 
 clean:
