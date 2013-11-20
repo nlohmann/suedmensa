@@ -1,18 +1,18 @@
 <html>
 <head>
-<meta property='og:image' content='{{ url_for('static', filename='%s/avatar.png' % menu.mensa, _external=True) }}' />
+    <meta property='og:image' content='{{ url_for('static', filename='pics/avatar/%s.png' % menu.mensa, _external=True) }}' />
 </head>
 
 <body>
-{% for key, value in menu.theken.iteritems() %}
-<h2>{{ key|thekenname }}</h2>
-<ul>
-  {% for meal in value %}
-     <li>{{meal.name}}</li>
-  {% endfor %}
-</ul>
-{% endfor %}
+    {% for key, value in menu.theken.iteritems() %}
+    <h2>{{ key|thekenname }}</h2>
+    <ul>
+        {% for meal in value %}
+        <li>{{meal.name}}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
 
-<img src="{{ url_for('static', filename='%s/avatar.png' % menu.mensa, _external=True) }}" style="height: 32px; width: 32px;" alt="{{menu.name}}">
+    <img src="{{ url_for('static', filename='pics/avatar/%s.png' % menu.mensa, _external=True) }}" style="height: 32px; width: 32px;" alt="{{menu.name}}">
 </body>
 </html>

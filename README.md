@@ -92,3 +92,5 @@ Der Speiseplan läuft unter Python und nutzt [Flask](http://flask.pocoo.org) und
 ## Danksagung
 
 Das [Icon](http://thenounproject.com/noun/restaurant/#icon-No2392) von [@Suedmensa](https://twitter.com/suedmensa) wurde von [Saman Bemel-Benrud](http://thenounproject.com/samanbb/#) entworfen und als [Public Domain](http://creativecommons.org/publicdomain/zero/1.0/) veröffentlicht.
+
+Wir danken [Klaus](https://twitter.com/demed86) für den Betatest des Atom-Feeds.

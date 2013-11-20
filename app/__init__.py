@@ -20,6 +20,10 @@ from menu import getmenu
 app = Flask(__name__)
 app.debug = True
 
+# remove some whitespace in the templated code
+app.jinja_env.trim_blocks = True
+app.jinja_env.lstrip_blocks = True
+
 # set cache
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
