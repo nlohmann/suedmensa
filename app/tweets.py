@@ -45,7 +45,7 @@ def cap_length(tweet):
     Shortens the tweet to 140 characters.
     """
     if len(tweet) >= 140:
-        return tweet[0:140]+'…'
+        return tweet[0:139]+'…'
     else:
         return tweet
 
@@ -174,5 +174,5 @@ auth.set_access_token(CREDENTIALS['ACCESS_KEY'], CREDENTIALS['ACCESS_SECRET'])
 api = tweepy.API(auth)
 
 for tweet in tweets:
-    print tweet
+    print tweet, len(tweet)
     api.update_status(tweet)
