@@ -183,14 +183,12 @@ def getmenu(mensa):
             praedikat = ''
             continue
 
-        if line == 'PASTATHEKE':
+        if line in ['PASTATHEKE', u'PASTASOßE', "PASTASAUCE"]:
             theke = 'pasta'
             praedikat = ''
             continue
 
-        if line[0:10] == 'PASTASAUCE':
-            theke = 'pasta'
-            praedikat = ''
+        if line == 'KINDERTELLER' or line == 'freie Auswahl (halbe Portion)':
             continue
 
         if line == 'vegan':
