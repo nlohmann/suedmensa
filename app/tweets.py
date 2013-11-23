@@ -164,7 +164,6 @@ m = getmenu(MENSA)
 
 # don't tweet on holidays
 if 'kommentar' in m:
-    print m['kommentar']
     sys.exit()
 
 tweets = combine(get_tweets(m))
