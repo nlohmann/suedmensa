@@ -143,12 +143,16 @@ def getmenu(mensa):
         "url": url,
         "mensa": mensa,
         "theken": {},
+        'name': MENSEN[mensa]['name'],
+        'twitter': MENSEN[mensa]['twitter'],
+        'foursquare': MENSEN[mensa]['foursquare'],
+        'color': MENSEN[mensa]['color'],
         "status": 200
     }
 
     # in case of holidays, return commented, empty menu
-    if menu_list[1] == 'Feiertag':
-        menu["kommentar"] = 'Feiertag'
+    if menu_list[1] == 'Feiertag' or menu_list[1] == '-':
+        menu["kommentar"] = 'Die %s ist heute geschlossen.' % MENSEN[mensa]['name']
         return menu
 
     theke = ''
@@ -240,12 +244,6 @@ def getmenu(mensa):
                 meal['name'] = meal['name'].replace('  ', ' ')
                 meal['name'] = meal['name'].strip()
                 meal['vegan'] = True
-
-    # add global information
-    menu['name'] = MENSEN[mensa]['name']
-    menu['twitter'] = MENSEN[mensa]['twitter']
-    menu['foursquare'] = MENSEN[mensa]['foursquare']
-    menu['color'] = MENSEN[mensa]['color']
 
     return menu
 
