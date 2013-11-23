@@ -151,7 +151,7 @@ def getmenu(mensa):
     }
 
     # in case of holidays, return commented, empty menu
-    if menu_list[1] == 'Feiertag' or menu_list[1] == '-':
+    if len(menu_list) == 1 or menu_list[1] == 'Feiertag' or menu_list[1] == '-':
         menu["kommentar"] = 'Die %s ist heute geschlossen.' % MENSEN[mensa]['name']
         return menu
 

@@ -32,16 +32,20 @@
 </head>
 
 <body>
-{% for key, value in menu.theken.iteritems() %}
-<div class="theke">
-<span class="title">{{ key|thekennameshort }}</span>
-{% for meal in value %}
-{{meal.name}}
-{% if not loop.last %}
-|
-{% endif %}
-{% endfor %}
-</div>
-{% endfor %}
+    {% if menu.kommentar %}
+    <p>{{menu.kommentar}}</p>
+    {% endif %}
+    
+    {% for key, value in menu.theken.iteritems() %}
+    <div class="theke">
+        <span class="title">{{ key|thekennameshort }}</span>
+        {% for meal in value %}
+        {{meal.name}}
+        {% if not loop.last %}
+        |
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
 </body>
 </html>
