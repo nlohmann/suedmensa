@@ -100,12 +100,24 @@ def getmenu(mensa):
     soup = bs4.BeautifulSoup(html, "lxml")
     menu_links = soup.find_all('a', { "class" : "link_text" })
 
+    # the structure of the return object
+    menu = {
+        "mensa": mensa,
+        "theken": {},
+        'name': MENSEN[mensa]['name'],
+        'twitter': MENSEN[mensa]['twitter'],
+        'foursquare': MENSEN[mensa]['foursquare'],
+        'color': MENSEN[mensa]['color'],
+        "status": 200
+    }
+
     # abort if no menus found
     if not menu_links:
         return {"status": 502, "error": "no menus found"}
 
     # select the chosen mensa menu link (ordered as on the index page)
     url = baseurl + menu_links[detailurls[mensa]]['href']
+    menu["url"] = url
 
     # load and parse the menu website
     html = urllib2.urlopen(url).read()
@@ -133,22 +145,11 @@ def getmenu(mensa):
 
     try:
         # convert the date
-        datestring = datetime.datetime.strptime(menu_list[0].split()[-1], "%d.%m.%Y").date().isoformat()
+        menu["datum"] = datetime.datetime.strptime(menu_list[0].split()[-1], "%d.%m.%Y").date().isoformat()
     except:
-        return {"status": 502, "error": "no menus found"}
-
-    # the structure of the return object
-    menu = {
-        "datum": datestring,
-        "url": url,
-        "mensa": mensa,
-        "theken": {},
-        'name': MENSEN[mensa]['name'],
-        'twitter': MENSEN[mensa]['twitter'],
-        'foursquare': MENSEN[mensa]['foursquare'],
-        'color': MENSEN[mensa]['color'],
-        "status": 200
-    }
+        menu["kommentar"] = 'Die %s ist heute geschlossen.' % MENSEN[mensa]['name']
+        return menu
+        #return {"status": 502, "error": "no menus found"}
 
     # in case of holidays, return commented, empty menu
     if len(menu_list) == 1 or menu_list[1] == 'Feiertag' or menu_list[1] == '-':
