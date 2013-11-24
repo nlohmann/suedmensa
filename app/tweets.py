@@ -162,6 +162,11 @@ def add_appetite(tweets):
 
 m = getmenu(MENSA)
 
+# if an error occurs, exit
+if 'error' in m:
+    print m['error']
+    sys.exit()
+
 # don't tweet on holidays
 if 'kommentar' in m:
     sys.exit()
