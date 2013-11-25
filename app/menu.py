@@ -30,6 +30,10 @@ THEKEN = {
     "vital": {
         "short": "Vital",
         "long": "Vitaltheke"
+    },
+    "beilagen": {
+        "short": "Beilagen",
+        "long": u"Sättigungsbeilagen"
     }
 }
 
@@ -174,6 +178,11 @@ def getmenu(mensa):
 
         if line == 'THEKE 3':
             theke = 'theke3'
+            praedikat = ''
+            continue
+
+        if line == u'Sättigungsbeilagen':
+            theke = 'beilagen'
             praedikat = ''
             continue
 

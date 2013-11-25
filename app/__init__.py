@@ -132,7 +132,8 @@ def filter_thekenname(s):
         "theke3": u"Theke 3",
         "aktion": u"Aktionstheke",
         "pasta": u"Pastatheke",
-        "vital": u"Vitaltheke"
+        "vital": u"Vitaltheke",
+        "beilagen": u"Sättigungsbeilagen"
     }
     return names[s]
 
@@ -144,7 +145,8 @@ def filter_thekennameshort(s):
         "theke3": u"Theke 3",
         "aktion": u"Aktion",
         "pasta": u"Pasta",
-        "vital": u"Vital"
+        "vital": u"Vital",
+        "beilagen": u"Beilagen"
     }
     return names[s]
 
