@@ -116,7 +116,8 @@ def get_tweets(m):
             "theke2": "THEKE 2",
             "theke3": "THEKE 3",
             "pasta": "PASTA",
-            "aktion": "AKTION"
+            "aktion": "AKTION",
+            "beilagen": "BEILAGEN"
         }
 
         meals = [shorten(x['name'].encode('utf-8')) for x in m['theken'][theke]]
