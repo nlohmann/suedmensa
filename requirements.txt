@@ -9,7 +9,7 @@ beautifulsoup4==4.3.2
 iso8601==0.1.8
 itsdangerous==0.23
 logilab-common==0.60.0
-lxml==3.2.3
+lxml==4.6.2
 pylint==1.0.0
 six==1.4.1
 tweepy==2.1
